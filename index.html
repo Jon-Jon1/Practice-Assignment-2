@@ -1,61 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Library thing</title>
-</head>
-<body>
-	<div class="container">
-		<div>
-			<h2>Library Book Managment System</h2>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Library thing</title>
+	</head>
+	<body>
+		<div class="container">
 			<div>
-				<input type="text" id="text">
-				<button onclick = "front()">Add to front</button>
-				<button onclick = "end()">Add to end</button>
+				<h2>Library Book Managment System</h2>
+				<div>
+					<input type="text" id="text" />
+					<button onclick="front()">Add to front</button>
+					<button onclick="end()">Add to end</button>
+				</div>
+			</div>
+			<div>
+				<h2>Remove Books</h2>
+				<button onclick="frontR()">Remove from front</button>
+				<button onclick="endR()">Remove from end</button>
+			</div>
+			<div>
+				<h2>Current Book Shelf</h2>
+				<h5><b>Front</b></h5>
+				<ul id="list" style="text-decoration: none"></ul>
+				<h5><b>End</b></h5>
 			</div>
 		</div>
-		<div>
-			<h2>Remove Books</h2>
-			<button onclick = "frontR()">Remove from front</button>
-			<button onclick = "endR()">Remove from end</button>
-		</div>
-		<div>
-			<h2>Current Book Shelf</h2>
-			<ol id="list">
-
-			</ol>
-		</div>
-	</div>
-	<script>
-		const text = document.getElementById('text')
-		const HTML = document.getElementById('list')
-		let books = ["The G G", "Sons and Lovers", "To Kill a Mockingbird", "Pride and Prejudice"]
-		function updateBookShelf(){
-			HTML.innerHTML = ``
-			for(let i = 0; i<books.length; i++){
-				HTML.innerHTML += `
-				<li>${books[i]}</li>
-				`
+		<script>
+			const text = document.getElementById("text");
+			const HTML = document.getElementById("list");
+			let books = [
+				"The G G",
+				"Sons and Lovers",
+				"To Kill a Mockingbird",
+				"Pride and Prejudice",
+			];
+			function updateBookShelf() {
+				HTML.innerHTML = ``;
+				if (books.length != 0) {
+					for (let i = 0; i < books.length; i++) {
+						HTML.innerHTML += `
+					<li>${books[i]}</li>
+					`;
+					}
+				} else {
+					HTML.innerHTML += `<p>No Books on Shelf</p>`;
+				}
 			}
-		}
-		function front(){
-			books.unshift(text.value)
-			updateBookShelf()
-		}
-		function end(){
-			books.push(text.value)
-			updateBookShelf()
-		}
-		function frontR(){
-			books.shift(text.value)
-			updateBookShelf()
-		}
-		function endR(){
-			books.pop(text.value)
-			updateBookShelf()
-		}
-		updateBookShelf()
-	</script>
-</body>
+			function front() {
+				books.unshift(text.value);
+				updateBookShelf();
+			}
+			function end() {
+				books.push(text.value);
+				updateBookShelf();
+			}
+			function frontR() {
+				books.shift(text.value);
+				updateBookShelf();
+			}
+			function endR() {
+				books.pop(text.value);
+				updateBookShelf();
+			}
+			updateBookShelf();
+		</script>
+	</body>
 </html>
